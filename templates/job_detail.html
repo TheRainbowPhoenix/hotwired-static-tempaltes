@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block styles %}
+<link rel="preload" href="/static/css/detail_classic.css" as="style" />
+<link rel="preload" href="/static/js/public.js" as="script" />
+<link rel="stylesheet" type="text/css" href="/static/css/detail_classic.css" />
+{% endblock %} {% block ld_breadcrumb %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": {{seo.ld_breadcrumb|tojson|safe}}
+  }
+</script>
+{% endblock %} {% block ld_extra %}
+<script type="application/ld+json">
+  {{seo.ld_job_posting|tojson|safe}}
+</script>
+{% endblock %}

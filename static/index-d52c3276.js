@@ -1,0 +1,1 @@
+import{C as t,A as o}from"./runtime-babce4aa.js";class i extends t{connect(){this.element.textContent="It works!"}}const n=[{identifier:"it-works",controllerConstructor:i}];window.Stimulus=o.start();window.Stimulus.load(n);window.Stimulus.debug=!0;

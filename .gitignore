@@ -1,0 +1,4 @@
+.src_get
+node_modules
+__pycache__
+venv

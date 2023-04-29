@@ -1,0 +1,412 @@
+{% extends "base.html" %} {% block styles %}
+<link rel="preload" href="/static/css/company_classic.css" as="style" />
+<link rel="preload" href="/static/js/public.js" as="script" />
+<link rel="stylesheet" type="text/css" href="/static/css/company_classic.css" />
+{% endblock %} {% block ld_breadcrumb %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": {{seo.ld_breadcrumb|tojson|safe}}
+  }
+</script>
+{% endblock %} {% block body %}
+<div class="sm:layout-grid">
+  <input type="checkbox" class="peer hidden" id="toggleBurgerMenu" />
+  <header
+    class="overflow-y-auto sm:overflow-y-visible z-30 py-3 pl-4 sm:pl-0 bg-white w-full relative sm:static sm:flex sm:flex-row sm:justify-between sm:items-center peer-checked:fixed peer-checked:inset-0 peer-checked:z-50"
+  >
+    <div
+      class="relative max-w-max top-0 left-0 transition-all ease-in-out duration-300 peer-parent-checked:left-[calc(50%-40px)]"
+    >
+      <a href="https://www.hellowork.com/fr-fr/" class="inline-flex">
+        <svg
+          class="mt-0 mb-0 h-8 sm:mt-0 sm:h-10"
+          data-controller="cross-origin-svg"
+          data-cross-origin-svg-url-value="https://f.hellowork.com/hellowork/tags/2.27.0//img/svg/commons/logo-hellowork.svg"
+        ></svg>
+      </a>
+    </div>
+
+    <label
+      for="toggleBurgerMenu"
+      class="block absolute top-2 right-4 md:right-8 py-4 z-20 sm:hidden"
+    >
+      <span
+        class="duration-300 block h-0.5 w-4 bg-black mb-[3px] peer-parent-checked:translate-y-[5px] peer-parent-checked:rotate-45 transition-all"
+      ></span>
+      <span
+        class="duration-300 block h-0.5 w-4 bg-black peer-parent-checked:opacity-0 transition-all"
+      ></span>
+      <span
+        class="duration-300 block h-0.5 w-4 bg-black mt-[3px] peer-parent-checked:-translate-y-[5px] peer-parent-checked:-rotate-45 transition-all"
+      ></span>
+    </label>
+
+    <nav
+      class="[--burger-item-start:250ms] [--burger-item-delay:15ms] peer-parent-checked:mt-10"
+    >
+      <ul
+        class="h-0 py-0 overflow-hidden flex flex-col-reverse items-center justify-end sm:flex-row sm:p-0 sm:overflow-visible sm:h-auto peer-parent-checked:h-fit"
+      >
+        <li class="block connected:hidden">
+          <details
+            data-controller="details"
+            data-action="
+                            details:not:sm->details#expand
+                            details:not:sm->details#disableClickOutside
+
+                            details:is:sm->details#collapse
+                            details:is:sm->details#enableClickOutside
+                            
+                            details:click:outside->details#collapse
+                        "
+          >
+            <summary
+              data-cy="headerRecruiterMenu"
+              class="menu-element-appears peer-parent-checked:delay-[calc(var(--burger-item-start)_+_6_*_var(--burger-item-delay))] mx-auto w-max mt-10 mb-4 uppercase typo-xs-bold pb-2 border-b border-greyLighter sm:link-s sm:my-0 sm:flex sm:normal-case sm:border-0"
+            >
+              Accès recruteur<svg
+                class="hidden w-2 h-[4.5px] sm:h-4 sm:block"
+                data-controller="cross-origin-svg"
+                data-cross-origin-svg-url-value="https://f.hellowork.com/hellowork/tags/2.27.0//img/svg/commons/expand-more.svg"
+              ></svg>
+            </summary>
+            <div class="sm:relative">
+              <ul
+                class="flex flex-col items-center bg-white rounded-sm border-greyLight right-0 sm:z-10 sm:p-2 sm:mt-2 sm:items-start sm:w-max sm:absolute sm:border"
+              >
+                <li
+                  class="menu-element-appears peer-parent-checked:delay-[calc(var(--burger-item-start)_+_7_*_var(--burger-item-delay))] sm:w-full"
+                >
+                  <span
+                    data-cy="headerRecruiterLinkPublish"
+                    data-controller="atc"
+                    data-atc-l-value="xuggcf://erpehgrhe=pt=uryybjbex=pt=pbz/enccryrm-zbv-zrahf"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    Diffuser ma première offre
+                  </span>
+                </li>
+                <li
+                  class="menu-element-appears peer-parent-checked:delay-[calc(var(--burger-item-start)_+_8_*_var(--burger-item-delay))] mt-4 sm:mt-auto sm:w-full"
+                >
+                  <span
+                    data-cy="headerRecruiterLinkCustomers"
+                    data-controller="atc"
+                    data-atc-l-value="xuggcf://erpehgrhe=pt=uryybjbex=pt=pbz/zrfnccyvpngvbaff"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    Déjà client
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </li>
+        <li
+          class="flex flex-col items-center sm:hidden"
+          data-controller="mobile-app"
+        >
+          <p
+            class="menu-element-appears peer-parent-checked:delay-[calc(var(--burger-item-start)_+_4_*_var(--burger-item-delay))] mt-10 mb-4 uppercase typo-xs-bold pb-2 border-b border-greyLighter"
+          >
+            Télécharger l’app
+          </p>
+          <div
+            class="flex gap-2 menu-element-appears peer-parent-checked:delay-[calc(var(--burger-item-start)_+_5_*_var(--burger-item-delay))]"
+          >
+            <img
+              alt="Application Android (nouvelle fenêtre)"
+              data-controller="atc"
+              data-atc-l-value="xuggcf://cynl=pt=tbbtyr=pt=pbz/fgber/nccf/qrgnvyf?vq=pbz=pt=ertvbafwbo=pt=naqebvqf"
+              data-atc-t-value="x_oynaxf"
+              src="https://f.hellowork.com/hellowork/tags/2.27.0//img/svg/badgeAndroid.svg"
+              class="w-32"
+            />
+            <img
+              alt="Application ios (nouvelle fenêtre)"
+              data-controller="atc"
+              data-atc-l-value="xuggcf://nccf=pt=nccyr=pt=pbz/se/ncc/ertvbafwbo-rzcybv/vq408615037?zg=8f"
+              data-atc-t-value="x_oynaxf"
+              src="https://f.hellowork.com/hellowork/tags/2.27.0//img/svg/badgeAppStore.svg"
+              class="w-32"
+            />
+          </div>
+        </li>
+        <input type="checkbox" class="menu hidden" id="moreJobs" />
+        <li class="block connected:hidden sm:connected:block">
+          <details
+            data-controller="details"
+            data-action="
+                            details:not:sm->details#expand
+                            details:not:sm->details#disableClickOutside
+
+                            details:is:sm->details#collapse
+                            details:is:sm->details#enableClickOutside
+                            
+                            details:click:outside->details#collapse
+                        "
+          >
+            <summary data-cy="headerJobMenu" class="hidden sm:block">
+              <span class="link-m sm:link-s sm:rounded-sm sm:flex">
+                Emploi
+                <svg
+                  class="w-2 h-2"
+                  data-controller="cross-origin-svg"
+                  data-cross-origin-svg-url-value="https://f.hellowork.com/hellowork/tags/2.27.0//img/svg/nav/arrow-down.svg"
+                ></svg>
+              </span>
+            </summary>
+
+            <div
+              class="hidden sm:relative sm:block menu-parent-checked:bg-white menu-parent-checked:absolute menu-parent-checked:inset-0 menu-parent-checked:z-50 menu-parent-checked:block"
+            >
+              <ul
+                class="space-y-4 flex flex-col items-center bg-white rounded-sm border-greyLight right-0 sm:space-y-0 sm:z-10 sm:p-2 sm:mt-2 sm:items-start sm:w-max sm:absolute sm:border menu-parent-checked:absolute menu-parent-checked:inset-x-0 menu-parent-checked:top-1/4"
+              >
+                <li class="sm:w-full hidden sm:block menu-parent-checked:block">
+                  <a
+                    data-cy="headerJobOffersLink"
+                    href="/fr-fr/emploi.html"
+                    class="link-m sm:link-s sm:rounded-xs sm:p-2"
+                    >Offres d’emploi</a
+                  >
+                </li>
+                <li class="sm:w-full hidden sm:block menu-parent-checked:block">
+                  <a
+                    data-cy="headerJobInterimLink"
+                    href="/fr-fr/interim.html"
+                    class="link-m sm:link-s sm:rounded-xs sm:p-2"
+                    >Missions d'intérim</a
+                  >
+                </li>
+                <li class="sm:w-full hidden sm:block menu-parent-checked:block">
+                  <a
+                    data-cy="headerJobInternshipLink"
+                    href="/fr-fr/stage.html"
+                    class="link-m sm:link-s sm:rounded-xs sm:p-2"
+                    >Offres de stage</a
+                  >
+                </li>
+                <li class="sm:w-full hidden sm:block menu-parent-checked:block">
+                  <a
+                    data-cy="headerJobAlternatelyLink"
+                    href="/fr-fr/alternance.html"
+                    class="link-m sm:link-s sm:rounded-xs sm:p-2"
+                    >Offres en alternance</a
+                  >
+                </li>
+                <li class="sm:w-full hidden sm:block menu-parent-checked:block">
+                  <a
+                    data-cy="headerJobCompanyLink"
+                    href="/fr-fr/entreprise.html"
+                    class="link-m sm:link-s sm:rounded-xs sm:p-2"
+                    >Entreprises qui recrutent</a
+                  >
+                </li>
+                <li class="sm:w-full hidden sm:block menu-parent-checked:block">
+                  <span
+                    data-cy="headerJobAlertAtc"
+                    data-atc-l-value="x/se-se/pnaqvqng/perngvba-nyregr=pt=ugzyf"
+                    data-controller="atc"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    Créer mon alerte
+                  </span>
+                </li>
+                <li class="sm:w-full hidden sm:block menu-parent-checked:block">
+                  <span
+                    data-cy="navJobCvAtc"
+                    data-atc-l-value="x/se-se/pnaqvqng/qrcbg-pi-rgncr1=pt=ugzyf"
+                    data-controller="atc"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    Déposer mon CV
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </li>
+        <li class="connected:hidden sm:connected:block">
+          <a
+            data-cy="headerEduLink"
+            href="https://www.maformation.fr/"
+            class="link-m sm:link-s menu-element-appears peer-parent-checked:delay-[calc(var(--burger-item-start)_+_3_*_var(--burger-item-delay))] mt-4 sm:mt-0"
+            >Formation</a
+          >
+        </li>
+        <li
+          class="menu-element-appears menu-checked:absolute menu-checked:top-0 menu-checked:inset-x-0 menu-checked:z-50 peer-parent-checked:delay-[calc(var(--burger-item-start)_+_2_*_var(--burger-item-delay))] mt-4 menu-checked:mt-0 sm:mt-0 block sm:hidden connected:hidden"
+        >
+          <label
+            class="link-m sm:link-s sm:rounded-xs sm:p-2 sm:flex menu-parent-checked:hidden"
+            for="moreJobs"
+          >
+            Emploi
+            <svg
+              class="w-2 block"
+              data-controller="cross-origin-svg"
+              data-cross-origin-svg-url-value="https://f.hellowork.com/hellowork/tags/2.27.0//img/svg/nav/arrow-right.svg"
+            ></svg>
+          </label>
+          <label
+            class="cursor-pointer p-4 hidden menu-parent-checked:block"
+            for="moreJobs"
+          >
+            <p class="w-full flex items-center justify-center">
+              <svg
+                class="h-4 w-4 absolute left-4"
+                data-controller="cross-origin-svg"
+                data-cross-origin-svg-url-value="https://f.hellowork.com/hellowork/tags/2.27.0//img/svg/nav/arrow-left.svg"
+              ></svg>
+              Emploi
+            </p>
+          </label>
+        </li>
+        <li class="max-w-[250px]">
+          <details
+            class="sm:ml-4"
+            data-controller="details"
+            data-action="
+                            details:not:sm->details#expand
+                            details:not:sm->details#disableClickOutside
+
+                            details:is:sm->details#collapse
+                            details:is:sm->details#enableClickOutside
+                            
+                            details:click:outside->details#collapse
+                        "
+          >
+            <summary
+              data-cy="headerAccountMenu"
+              class="hidden text-white sm:btn-primary-l sm:connected:btn-outline-l"
+            >
+              <svg
+                class="h-4 w-4"
+                data-controller="cross-origin-svg"
+                data-cross-origin-svg-url-value="https://f.hellowork.com/hellowork/tags/2.27.0//img/svg/commons/person.svg"
+              ></svg>
+              <span class="connected:hidden">Mon compte</span>
+
+              <span
+                class="hidden first-letter:uppercase sm:connected:block"
+                data-controller="from-cached-account-data from-account-data"
+                data-from-account-data-copy-value="FirstName"
+                data-from-account-data-into-value="innerText"
+              >
+              </span>
+            </summary>
+            <div class="sm:relative">
+              <ul
+                class="flex flex-col items-center bg-white rounded-sm border-greyLight right-0 sm:z-10 sm:p-2 sm:mt-2 sm:w-max sm:absolute sm:border"
+              >
+                <li
+                  class="menu-element-appears peer-parent-checked:delay-[calc(var(--burger-item-start)_+_1_*_var(--burger-item-delay))] sm:w-full connected:hidden"
+                >
+                  <span
+                    data-controller="atc"
+                    data-atc-l-value="x/se-se/pnaqvqng/pbaarkvba-vafpevcgvba=pt=ugzy#pbaarkvbaf"
+                  >
+                    <span
+                      data-cy="headerAccountLogIn"
+                      class="hidden sm:block link-m sm:link-s sm:rounded-xs sm:p-2"
+                      >Se connecter</span
+                    >
+                    <span
+                      class="sm:hidden text-white btn-primary-l mb-4 connected:hidden"
+                    >
+                      <svg
+                        class="h-4"
+                        data-controller="cross-origin-svg"
+                        data-cross-origin-svg-url-value="https://f.hellowork.com/hellowork/tags/2.27.0//img/svg/commons/person.svg"
+                      ></svg>
+                      Mon compte
+                    </span>
+                  </span>
+                </li>
+                <li
+                  class="menu-element-appears peer-parent-checked:delay-[calc(var(--burger-item-start)_+_2_*_var(--burger-item-delay))] sm:w-full connected:hidden"
+                >
+                  <span
+                    data-cy="headerAccountRegister"
+                    data-controller="atc"
+                    data-atc-l-value="x/se-se/pnaqvqng/pbaarkvba-vafpevcgvba=pt=ugzy#vafpevcgvbaf"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    S'inscrire
+                  </span>
+                </li>
+                <li
+                  class="menu-element-appears hidden connected:block peer-parent-checked:delay-[calc(var(--burger-item-start)_+_2_*_var(--burger-item-delay))] mt-4 sm:mt-auto sm:w-full"
+                >
+                  <span
+                    data-controller="atc"
+                    data-cy="headerAccountMyOfferLink"
+                    data-atc-l-value="x/se-se/pnaqvqng/bsserf=pt=ugzyf"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    Mes offres
+                  </span>
+                </li>
+                <li
+                  class="menu-element-appears hidden connected:block peer-parent-checked:delay-[calc(var(--burger-item-start)_+_3_*_var(--burger-item-delay))] mt-4 sm:mt-auto sm:w-full"
+                >
+                  <span
+                    data-controller="atc"
+                    data-cy="headerAccountMyAlertLink"
+                    data-atc-l-value="x/se-se/pnaqvqng/nyregrf=pt=ugzyf"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    Mes alertes
+                  </span>
+                </li>
+                <li
+                  class="menu-element-appears hidden connected:block peer-parent-checked:delay-[calc(var(--burger-item-start)_+_4_*_var(--burger-item-delay))] mt-4 sm:mt-auto sm:w-full"
+                >
+                  <span
+                    data-cy="headerAccountMyMessageLink"
+                    data-controller="atc"
+                    data-atc-l-value="x/se-se/pnaqvqng/zrffntrf=pt=ugzyf"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    Mes messages
+                  </span>
+                </li>
+                <li
+                  class="menu-element-appears hidden connected:block peer-parent-checked:delay-[calc(var(--burger-item-start)_+_5_*_var(--burger-item-delay))] mt-4 sm:mt-auto sm:w-full"
+                >
+                  <span
+                    data-controller="atc"
+                    data-cy="headerAccountMyAccountLink"
+                    data-atc-l-value="x/se-se/pnaqvqng/cebsvy=pt=ugzyf"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    Mon profil
+                  </span>
+                </li>
+                <li
+                  class="menu-element-appears hidden connected:block peer-parent-checked:delay-[calc(var(--burger-item-start)_+_6_*_var(--burger-item-delay))] mt-4 sm:mt-auto sm:w-full"
+                >
+                  <span
+                    data-controller="atc"
+                    data-cy="headerAccountLogOut"
+                    data-atc-l-value="x/se-se/pnaqvqng/ybtbss?ergheaHey=%2Sse-se%2Sf"
+                    class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+                  >
+                    Me déconnecter
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<h1 data-controller="it-works">Base Name</h1>
+
+{% endblock %}

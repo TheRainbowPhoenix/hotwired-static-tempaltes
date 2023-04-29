@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- Silly disclaimer here -->
+<!--[if IE 7]><html lang="fr-fr" class="no-js ie7 lt-ie7 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="fr-fr" class="no-js ie8 lt-ie8"><![endif]-->
+<!--[if IE 9]><html lang="fr-fr" class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="fr-fr" class="no-js">
+  <!--><![endif]-->
+  <head>
+    <meta charset="UTF-8" />
+
+    {% block newrelic %}
+    <script type="text/javascript">
+      window.NREUM || (NREUM = {});
+    </script>
+    {% endblock %}
+
+    <title>▷ {{seo.title}}</title>
+
+    {% block piano_analytics %}
+    <script type="text/javascript">
+      /* Init du push de piano analytics */
+    </script>
+    {% endblock %} {% block gtag %}
+    <!--####Google Tag Manager####-->
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({{ dataLayer|tojson|safe }});
+    </script>
+    <!-- Page hiding snippet (recommended)  -->
+    <!-- Modified Analytics tracking code with Optimize plugin -->
+    <script>
+      (function (i, s, o, g, r, a, m) {})(
+        window,
+        document,
+        "script",
+        "dataLayer",
+        "GTM-PZLHDH"
+      );
+    </script>
+    <!-- End Google Tag Manager -->
+    {% endblock %}
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"
+    />
+    {% block expries %}{% endblock %}
+    <meta property="og:title" content="▷ {{seo.title}}" />
+    <meta property="og:description" content="{{seo.description}}" />
+    <meta name="description" content="{{seo.description}}" />
+    <meta
+      property="og:url"
+      content="{{app.extra.settings.site_url|safe}}/{{seo.slug}}"
+    />
+    <meta property="og:site_name" content="goodbye.konshin.ml" />
+    <meta
+      property="og:image"
+      content="{{app.extra.settings.site_url|safe}}/{{seo.og_image}}"
+      itemprop="image"
+    />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@me" />
+    <meta name="twitter:title" content="▷ {{seo.title}}" />
+    <meta name="twitter:description" content="{{seo.description}}" />
+    <meta name="twitter:domain" content="goodbye.konshin.ml" />
+    <meta name="twitter:app:id:googleplay" content="com.konshin.goodbye" />
+    <meta name="twitter:app:id:ipad" content="000000000" />
+    <meta name="twitter:app:id:iphone" content="000000000" />
+    <meta name="twitter:app:name:iphone" content="GoodbyeWork" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{{app.extra.settings.site_url|safe}}/goodbyework/img/favicons/goodbyework/favicon.ico"
+    />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="canonical"
+      href="{{app.extra.settings.site_url|safe}}/{{seo.slug}}"
+    />
+    {% block styles %}{% endblock %}
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "GoodbyeWork",
+        "url": "{{app.extra.settings.site_url|safe}}/fr-fr/"
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "GoodbyeWork",
+        "url": "{{app.extra.settings.site_url|safe}}",
+        "logo": "/static/xjob/img/sprites/logos/goodbyework.png",
+        "sameAs": ["https://www.konshin.ml"]
+      }
+    </script>
+
+    {% block ld_breadcrumb %} {% endblock %} {% block ld_extra %} {% endblock %}
+    <script>
+      var _ressources = "/static/";
+    </script>
+    {% block tailwind_play %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% endblock %}
+  </head>
+  <body class="tw-typo-s">
+    <main>
+      {% block cookie_conscent %}
+      <!-- Cookie Consent -->
+      <script>
+        window.GoodbyeworkCookieConsentCustomConfig = {
+          privacyPolicyUrl: "/fr-fr/page/pdc.html",
+          termsOfServiceUrl: "/fr-fr/page/cgu.html",
+          noticeIntroductionText:
+            "Nous utilisons des cookies pour vous suggérer les offres d’emploi les plus adaptées à votre recherche.",
+          noticeModal: true,
+          primaryBtnBackgroundColor: "#000000",
+          noticeModalLogo:
+            "/static/goodbyework/tags/2.27.0/img/svg/logos/black/logo-goodbyework.svg",
+          btnDenyCookies: true,
+          btnDenyCookiesType: "continue-without-accepting",
+        };
+      </script>
+      <script src="/static/hw-cookie-consent/latest/embed.js" defer></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // window.GoodbyeworkCookieConsent = new GoodbyeworkCookieConsent();
+        });
+      </script>
+      <!-- End Cookie Consent -->
+      {% endblock %} {{ vite_hmr_client() }} {% block body %} {% endblock %} {{
+      vite_asset('index.ts') }}
+    </main>
+  </body>
+</html>
