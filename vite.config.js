@@ -14,7 +14,10 @@ export default defineConfig({
     manifest: true,
     rollupOptions: {
       //   external: ["@hotwired/stimulus", "src_get"],
-      input: "src/index.ts",
+      input: {
+        index: "src/index.ts",
+        common: "src/seo.ts",
+      },
       output: {
         dir: "static",
         // file: "./static/vendor.js",

@@ -137,7 +137,7 @@
       </script>
       <!-- End Cookie Consent -->
       {% endblock %} {{ vite_hmr_client() }} {% block body %} {% endblock %} {{
-      vite_asset('index.ts') }}
+      vite_asset('index.ts') }} {% block extra_js %}{% endblock %}
     </main>
   </body>
 </html>

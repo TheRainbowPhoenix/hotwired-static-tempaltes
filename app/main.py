@@ -1,3 +1,4 @@
+import re
 from .viteLoader import vite_asset, vite_hmr_client
 import typing
 from fastapi import FastAPI, Request
@@ -30,18 +31,25 @@ def app_context(request: Request) -> typing.Dict[str, typing.Any]:
     return {'app': request.app}
 
 
-# def vite_hmr_client():
-#     return ""
+def seo_crypt(value):
+    # Add "x" at the beginning and "f" at the end
+    value = f'x{value}f'
 
+    # Apply ROT13 to a-zA-Z characters
+    value = re.sub(r'[a-zA-Z]', lambda m: chr((ord(m.group(0).lower()) - 97 + 13) % 26 + 97).upper()
+                   if m.group(0).isupper() else chr((ord(m.group(0).lower()) - 97 + 13) % 26 + 97), value)
 
-# def vite_asset(file):
-#     return ""
+    # Replace dots with "=pt="
+    value = value.replace('.', '=pt=')
+
+    return value
 
 
 templates = Jinja2Templates(directory="templates",
                             context_processors=[app_context])
 templates.env.globals['vite_hmr_client'] = vite_hmr_client
 templates.env.globals['vite_asset'] = vite_asset
+templates.env.filters['seo_crypt'] = seo_crypt
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 

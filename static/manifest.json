@@ -9,5 +9,13 @@
     ],
     "isEntry": true,
     "src": "index.ts"
+  },
+  "seo.ts": {
+    "file": "common.js",
+    "imports": [
+      "_runtime.js"
+    ],
+    "isEntry": true,
+    "src": "seo.ts"
   }
 }

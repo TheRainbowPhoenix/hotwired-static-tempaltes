@@ -20,4 +20,21 @@
   <button data-action="click->hello#greet">Greet</button>
 </div>
 
-{% endblock %}
+<span
+  data-cy="headerRecruiterLinkPublish"
+  data-controller="atc"
+  data-atc-l-value={{ "https://example.com"|seo_crypt }}
+  class="atc-m sm:atc-s sm:rounded-xs sm:p-2"
+>
+  My CTA hidden for google
+</span>
+
+<span
+data-controller="atc-experiment"
+data-atc-experiment-l-value={{ "https://example.com"|seo_crypt }}
+data-atc-experiment-t-value={{ "_blank"|seo_crypt }}
+>
+    My CTA Experiment
+</span>
+
+{% endblock %} {% block extra_js %}{{ vite_asset('seo.ts') }} {% endblock %}
