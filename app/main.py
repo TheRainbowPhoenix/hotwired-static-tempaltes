@@ -1,4 +1,4 @@
-from .viteLoader import vite_asset  # , vite_hmr_client
+from .viteLoader import vite_asset, vite_hmr_client
 import typing
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
@@ -30,8 +30,8 @@ def app_context(request: Request) -> typing.Dict[str, typing.Any]:
     return {'app': request.app}
 
 
-def vite_hmr_client():
-    return ""
+# def vite_hmr_client():
+#     return ""
 
 
 # def vite_asset(file):

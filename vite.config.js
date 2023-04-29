@@ -19,6 +19,9 @@ export default defineConfig({
         dir: "static",
         // file: "./static/vendor.js",
         format: "es",
+        entryFileNames: `[name].js`,
+        chunkFileNames: `[name].js`,
+        assetFileNames: `[name].[ext]`,
         manualChunks: {
           //   stimulus: ["@hotwired/stimulus"],
           //   turbo: ["@hotwired/turbo"],

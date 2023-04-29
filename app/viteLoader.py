@@ -3,6 +3,8 @@ from typing import ClassVar, Dict, Optional, Any
 import jinja2
 from pydantic import BaseSettings, validator
 from urllib.parse import urljoin
+from pathlib import Path
+import time
 
 
 class ViteSettings(BaseSettings):
@@ -44,11 +46,25 @@ class ViteLoader(object):
 
         return cls.instance
 
+    def check_manifest(self) -> None:
+        file = Path(settings.manifest_path)
+
+        try:
+            mtime = file.stat().st_mtime
+        except OSError:  # pragma: nocover
+            pass
+
+        old_time = self.manifest["__last_update__"]
+        if old_time is None or mtime > old_time:
+            print("Updating manifest ...")
+            self.parse_manifest()
+
     def parse_manifest(self) -> None:
         with open(settings.manifest_path, "r") as manifest_file:
             manifest_content = manifest_file.read()
         try:
             self.manifest = json.loads(manifest_content)
+            self.manifest["__last_update__"] = time.time()
         except Exception:
             raise RuntimeError(
                 "Cannot read Vite manifest file at {path}".format(
@@ -148,6 +164,8 @@ def vite_hmr_client() -> jinja2.utils.markupsafe.Markup:
     Returns:
         str -- The script tag or an empty string.
     """
+    ViteLoader().check_manifest()
+
     tags: list = []
     # tags.append(ViteLoader().generate_vite_react_hmr())
     # tags.append(ViteLoader().generate_vite_ws_client())

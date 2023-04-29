@@ -9,9 +9,27 @@ export class ItWorks extends Controller {
   }
 }
 
+export class Hello extends Controller {
+  static targets = ["name"];
+
+  nameTarget: HTMLInputElement;
+
+  greet() {
+    console.log(`Hello, ${this.name}!`);
+  }
+
+  get name() {
+    return this.nameTarget.value;
+  }
+}
+
 export const definitions = [
   {
     identifier: "it-works",
     controllerConstructor: ItWorks,
+  },
+  {
+    identifier: "hello",
+    controllerConstructor: Hello,
   },
 ];

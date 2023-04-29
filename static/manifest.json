@@ -1,11 +1,11 @@
 {
-  "_runtime-babce4aa.js": {
-    "file": "runtime-babce4aa.js"
+  "_runtime.js": {
+    "file": "runtime.js"
   },
   "index.ts": {
-    "file": "index-d52c3276.js",
+    "file": "index.js",
     "imports": [
-      "_runtime-babce4aa.js"
+      "_runtime.js"
     ],
     "isEntry": true,
     "src": "index.ts"
