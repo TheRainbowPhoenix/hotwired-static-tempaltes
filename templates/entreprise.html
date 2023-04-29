@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block styles %}
-<link rel="preload" href="/static/css/company_classic.css" as="style" />
+<!-- <link rel="preload" href="/static/css/company_classic.css" as="style" />
 <link rel="preload" href="/static/js/public.js" as="script" />
-<link rel="stylesheet" type="text/css" href="/static/css/company_classic.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/company_classic.css" /> -->
 {% endblock %} {% block ld_breadcrumb %}
 <script type="application/ld+json">
   {
@@ -36,5 +36,31 @@ data-atc-experiment-t-value={{ "_blank"|seo_crypt }}
 >
     My CTA Experiment
 </span>
+
+<ul data-slist class="split-1" data-houdini>
+    {% for i in range(4*6) %}
+    <li>
+        <a href="/fr-fr/entreprises/hello-{{i}}" title="TODO {{ i }}">
+            TODO {{ i }}
+        </a>
+    {% endfor %}
+</ul>
+
+<ul>
+{% for i in range(120) %}
+    <li>{{ i }}. Loop iteration {{ loop.index }}</li>
+    {% if i == 60 %}
+    <li><div id="Promo_Email">Promo_Email</div></li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+<style>
+    [data-houdini] {
+        display: block !important;
+        max-height: 100% !important;
+    }
+</style>
+
 
 {% endblock %} {% block extra_js %}{{ vite_asset('seo.ts') }} {% endblock %}
